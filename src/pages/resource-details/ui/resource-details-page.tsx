@@ -384,3 +384,6 @@ const DownloadButton = styled.button`
     background-color: #1c64f2;
   }
 `;
+
+// 기본 내보내기 추가
+export default ResourceDetailsPage;

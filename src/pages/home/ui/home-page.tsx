@@ -28,6 +28,8 @@ export const HomePage = () => {
   );
 };
 
+export default HomePage;
+
 const PageContainer = styled.div`
   padding: 24px;
   max-width: 1200px;
