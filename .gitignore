@@ -1,0 +1,24 @@
+# Editor generated files
+.idea/
+.vscode/
+.history/
+
+# OS generated files #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+.env
+bin
+
+# AI Indexing configs
+.cursorignore
+.cursorindexingignore
+
+# Frontend generated files
+node_modules
+build/
