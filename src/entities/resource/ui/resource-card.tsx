@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/navigation';
-import { Download, Star, Eye } from 'lucide-react';
+import { Download, Eye, Clock } from 'lucide-react';
 import type { Resource } from '../model/types';
 
 interface ResourceCardProps {
@@ -34,13 +34,19 @@ export const ResourceCard = ({ resource }: ResourceCardProps) => {
 
       <CardFooter>
         <CardStat>
-          <Eye size={14} />
-          <span>{resource.views}</span>
+          <Clock size={14} />
+          <span>{resource.updatedAt}</span>
         </CardStat>
-        <CardStat>
-          <Download size={14} />
-          <span>{resource.downloads}</span>
-        </CardStat>
+        <CardCantainer>
+          <CardStat>
+            <Eye size={14} />
+            <span>{resource.views}</span>
+          </CardStat>
+          <CardStat>
+            <Download size={14} />
+            <span>{resource.downloads}</span>
+          </CardStat>
+        </CardCantainer>
       </CardFooter>
 
       {isHovered && <ViewButton>자세히 보기</ViewButton>}
@@ -106,8 +112,15 @@ const CardDescription = styled.p`
 
 const CardFooter = styled.div`
   display: flex;
+  justify-content: space-between;
   padding: 12px 16px;
   border-top: 1px solid #f2f4f6;
+  gap: 16px;
+  height: 44px;
+`;
+
+const CardCantainer = styled.div`
+  display: flex;
   gap: 16px;
 `;
 
@@ -130,4 +143,5 @@ const ViewButton = styled.div`
   padding: 12px;
   font-size: 14px;
   font-weight: 500;
+  height: 44px;
 `;

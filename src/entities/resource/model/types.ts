@@ -7,9 +7,9 @@ export interface Resource {
   preview: string;
   fullContent: string;
   downloads: number;
-  stars: number;
   views: number;
   author: string;
   createdAt: string;
-  tags: string[];
+  updatedAt: string;
+  password?: string;
 }

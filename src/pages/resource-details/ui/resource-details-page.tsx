@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import styled from 'styled-components';
-import { ArrowLeft, Download, Eye, Calendar, Check, Copy } from 'lucide-react';
+import { ArrowLeft, Download, Eye, Check, Copy, Clock } from 'lucide-react';
 import { Layout } from '@/widgets/layout';
 import { ResourceUnlock } from '@/features/resource-unlock';
 import { resources } from '@/entities/resource';
@@ -118,8 +118,8 @@ export const ResourceDetailsPage = () => {
 
           <MetaInfo>
             <DateInfo>
-              <Calendar size={14} />
-              <span>{format(new Date(resource.createdAt), 'yyyy년 MM월 dd일')} 수정</span>
+              <Clock size={14} />
+              <span>{format(new Date(resource.updatedAt), 'yyyy년 MM월 dd일')} 수정</span>
             </DateInfo>
             <StatsContainer>
               <Stat>
@@ -145,8 +145,8 @@ export const ResourceDetailsPage = () => {
           <SectionTitle>미리보기</SectionTitle>
           <PreviewContent>{resource.preview}</PreviewContent>
 
-          {!unlocked ? (
-            <ResourceUnlock onUnlock={handleUnlock} />
+          {!!resource.password && !unlocked ? (
+            <ResourceUnlock password={resource.password} onUnlock={handleUnlock} />
           ) : (
             <FullContent>
               <SectionTitle>전체 내용</SectionTitle>
@@ -362,9 +362,13 @@ const CodeContent = styled.pre`
 `;
 
 const DownloadSection = styled.div`
-  margin-top: 32px;
+  margin: 32px 0 32px;
   display: flex;
   justify-content: center;
+  gap: 16px;
+  background-color: #f9fafb;
+  border-radius: 12px;
+  padding: 40px 20px;
 `;
 
 const DownloadButton = styled.button`
@@ -385,5 +389,4 @@ const DownloadButton = styled.button`
   }
 `;
 
-// 기본 내보내기 추가
 export default ResourceDetailsPage;

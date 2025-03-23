@@ -5,17 +5,18 @@ import styled from 'styled-components';
 import { Lock } from 'lucide-react';
 
 interface ResourceUnlockProps {
+  password?: string;
   onUnlock: (isSuccess: boolean) => void;
 }
 
-export const ResourceUnlock = ({ onUnlock }: ResourceUnlockProps) => {
+export const ResourceUnlock = ({ password, onUnlock }: ResourceUnlockProps) => {
   const [showPasswordModal, setShowPasswordModal] = useState(false);
-  const [password, setPassword] = useState('');
+  const [inputPassword, setInputPassword] = useState('');
   const [error, setError] = useState('');
 
   const handleUnlock = () => {
     // 실제 앱에서는 백엔드 API를 통해 비밀번호를 검증합니다
-    if (password === '1234') {
+    if (inputPassword === password) {
       onUnlock(true);
       setShowPasswordModal(false);
       setError('');
@@ -42,8 +43,8 @@ export const ResourceUnlock = ({ onUnlock }: ResourceUnlockProps) => {
             <PasswordInput
               type="password"
               placeholder="비밀번호를 입력하세요"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
+              value={inputPassword}
+              onChange={e => setInputPassword(e.target.value)}
             />
             {error && <ErrorMessage>{error}</ErrorMessage>}
             <ModalButtons>
