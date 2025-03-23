@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import styled from 'styled-components';
-import { ArrowLeft, Download, Eye, Check, Copy, Clock } from 'lucide-react';
+import { ArrowLeft, Download, Eye, Check, Copy, Clock, Link2 } from 'lucide-react';
 import { Layout } from '@/widgets/layout';
 import { ResourceUnlock } from '@/features/resource-unlock';
 import { resources } from '@/entities/resource';
@@ -153,10 +153,23 @@ export const ResourceDetailsPage = () => {
               <ContentWrapper>{renderContent(resource.fullContent)}</ContentWrapper>
 
               <DownloadSection>
-                <DownloadButton>
-                  <Download size={18} />
-                  <span>다운로드</span>
-                </DownloadButton>
+                {resource.link ? (
+                  <>
+                    <SecondaryButton>
+                      <Download size={18} />
+                      <span>다운로드</span>
+                    </SecondaryButton>
+                    <PrimaryButton>
+                      <Link2 size={18} />
+                      <span>바로가기</span>
+                    </PrimaryButton>
+                  </>
+                ) : (
+                  <PrimaryButton>
+                    <Download size={18} />
+                    <span>다운로드</span>
+                  </PrimaryButton>
+                )}
               </DownloadSection>
             </FullContent>
           )}
@@ -371,7 +384,25 @@ const DownloadSection = styled.div`
   padding: 40px 20px;
 `;
 
-const DownloadButton = styled.button`
+const SecondaryButton = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #334155;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #f8fafc;
+  }
+`;
+
+const PrimaryButton = styled.button`
   display: flex;
   align-items: center;
   gap: 8px;

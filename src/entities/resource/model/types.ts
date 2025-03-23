@@ -12,4 +12,5 @@ export interface Resource {
   createdAt: string;
   updatedAt: string;
   password?: string;
+  link?: string;
 }

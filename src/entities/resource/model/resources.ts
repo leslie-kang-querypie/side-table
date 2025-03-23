@@ -33,6 +33,7 @@ export const resources: Resource[] = [
     author: '홍길동',
     createdAt: '2023-04-10',
     updatedAt: '2023-04-10',
+    link: 'editor/1',
   },
   {
     id: '3',
@@ -64,6 +65,7 @@ export const resources: Resource[] = [
     createdAt: '2023-04-10',
     updatedAt: '2023-04-10',
     password: '1234',
+    link: 'editor/2',
   },
   {
     id: '5',
